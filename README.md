@@ -207,4 +207,17 @@ SQL QUERIES
     	group by Branch_no having count(Emp_Id)>5
     	order by Branch_no desc
     
-17. 
+17. Retrieve the names of employees who manage branches and their respective branch addresses.
+
+    	SELECT e.Emp_name
+	FROM Branch b
+	JOIN Employee e ON b.Manager_Id = e.Emp_Id
+
+18.  Display the names of customers who have issued books with a rental price higher than Rs. 25.
+     
+	select Customer_name from Customer c
+	inner join IssueStatus i on i.Issued_cust=c.Customer_Id
+	inner join Books b on b.ISBN=i.Isbn_book
+	where b.Rental_Price>25
+
+ #End 
