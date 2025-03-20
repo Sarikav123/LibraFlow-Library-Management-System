@@ -172,10 +172,39 @@ SQL QUERIES
 6. Retrieve the book titles and the corresponding customers who have issued those books
       select c.Customer_name,B.Book_title from IssueStatus i
       join Customer c on c.Customer_Id=i.Issued_cust
-      join Books B on B.ISBN=i.Isbn_book
+      join Books B on B.ISBN=i.Isbn_book 
 
-7. Display the total count of books in each category.
+9. Display the total count of books in each category.
       select Category,count(*) as CountOfBooks from Books group by  Category;
 
-8.  Retrieve the employee names and their positions for the employees whose salaries are above Rs.50,000
+10.Retrieve the employee names and their positions for the employees whose salaries are above Rs.50,000
+         select Emp_name,Position from Employee where salary=50000
+
+11. List the customer names who registered before 2022-01-01 and have not issued any books yet.
+	select c.Customer_name from Customer c
+     	left join IssueStatus i on c.Customer_Id=i.Issued_cust
+     	where c.Reg_date <'2022-01-01' and i.issue_id is null
+
+12. Display the branch numbers and the total count of employees in each branch.
+	SELECT branch_no, COUNT(*) AS total_employees
+	FROM Employee
+	GROUP BY branch_no
+	ORDER BY branch_no;
+
+13. Display the names of customers who have issued books in the month of June 2023
     
+	select c.Customer_name from IssueStatus i 
+	inner join Customer c on c.Customer_Id=i.Issued_cust
+	where i.Issue_date between '2023-06-01' and '2023-06-30'
+
+14. Retrieve Book_title from book table containing history
+	SELECT Book_title
+	FROM Books
+	WHERE book_title LIKE '%history%';
+
+16. Retrieve the branch numbers along with the count of employees for branches having more than 5 employees
+       	select Branch_no, count(Emp_Id) from Employee
+    	group by Branch_no having count(Emp_Id)>5
+    	order by Branch_no desc
+    
+17. 
