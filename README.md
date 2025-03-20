@@ -84,7 +84,7 @@ SQL QUERIES
       Isbn_book2 INT,
       Foreign Key (Isbn_book2) references Books(ISBN)    
   	  );
-3. INSERTINg DATA INTO THE TABLES
+3. INSERTING DATA INTO THE TABLES
               -- Insert records into Branch
       INSERT INTO Branch VALUES 
       (101, 201, '123 Main St, New York, NY', 9876543210),
